@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import React from 'react';
+import './assets/css/style.css';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          
-   
+    <div className="app">
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
