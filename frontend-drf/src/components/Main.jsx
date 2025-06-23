@@ -10,19 +10,18 @@ function Main() {
   };
 
   return (
-    <main className="container my-5 text-center">
-      {/* Introduction Text */}
-      <section className="mb-5">
-        <h2 className="display-6 fw-bold text-dark mb-3">Welcome to the Stock Prediction Platform</h2>
-        <p className="lead text-secondary">
-          Our platform uses AI models to help forecast market trends and support your financial decisions.
-          Just enter a stock symbol and get an instant prediction!
+    <div className="container my-5">
+      {/* Header Section */}
+      <header className="mb-5 text-center">
+        <h1 className="display-5 fw-bold">📈 Stock Predictor</h1>
+        <p className="lead text-muted">
+          Use AI-powered predictions to make smart investment decisions.
         </p>
-      </section>
+      </header>
 
-      {/* Prediction Box */}
-      <div className="predict-box mx-auto">
-        <h2 className="text-primary mb-4">📊 Enter Stock Symbol</h2>
+      {/* Main Prediction Section */}
+      <section className="text-center mb-5">
+        <h2 className="text-primary mb-4">Enter Stock Symbol</h2>
         <div className="input-group mb-3 justify-content-center">
           <input
             type="text"
@@ -40,10 +39,14 @@ function Main() {
             <strong>Prediction:</strong> {prediction}
           </div>
         )}
-        {/* Login Button */}
         <button className="btn btn-outline-primary mt-4">Login to Save Predictions</button>
-      </div>
-    </main>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="text-center pt-4 border-top">
+        <p className="text-muted">&copy; 2025 Stock Predictor. All rights reserved.</p>
+      </footer>
+    </div>
   );
 }
 
