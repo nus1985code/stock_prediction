@@ -1,8 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from './Button';
+// Header.jsx
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { AuthContext } from "./AuthProvider";
+
 
 const Header = () => {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
   return (
     <header className="hero d-flex justify-content-between align-items-center px-4 py-3 bg-dark text-white">
       <div className="header-left">
@@ -13,8 +26,16 @@ const Header = () => {
       </div>
 
       <div className="header-right">
-        <Button to="/login" text="Login" variant="outline-light" />
-        <Button to="/register" text="Register" variant="light" />
+        {!isLoggedIn ? (
+          <>
+            <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
+            <Link to="/register" className="btn btn-light">Register</Link>
+          </>
+        ) : (
+          <button onClick={handleLogout} className="btn btn-danger">
+            Logout
+          </button>
+        )}
       </div>
     </header>
   );

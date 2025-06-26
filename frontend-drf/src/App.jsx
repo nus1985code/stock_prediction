@@ -1,3 +1,4 @@
+// App.jsx
 import React from 'react';
 import './assets/css/style.css';
 import Header from './components/Header';
@@ -6,10 +7,14 @@ import Footer from './components/Footer';
 import Register from './components/Register';
 import Login from './components/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// src/App.jsx
+import { AuthProvider } from './components/AuthProvider'; 
+
+
 
 function App() {
   return (
-    <div className="app">
+    <AuthProvider> {/* ✅ Wrap the entire app */}
       <BrowserRouter>
         <Header />
         <Routes>
@@ -19,7 +24,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+    </AuthProvider>
   );
 }
 
