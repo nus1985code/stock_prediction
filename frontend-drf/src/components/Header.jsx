@@ -1,9 +1,8 @@
-// Header.jsx
+// src/components/Header.jsx
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import { AuthContext } from "./AuthProvider";
-
+import { AuthContext } from './AuthProvider';
+import Button from './Button'; // ✅ Import your Button component
 
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -25,16 +24,19 @@ const Header = () => {
         <p className="mb-0">Predict stock trends with AI in real-time</p>
       </div>
 
-      <div className="header-right">
+      <div className="header-right d-flex align-items-center">
         {!isLoggedIn ? (
           <>
             <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
             <Link to="/register" className="btn btn-light">Register</Link>
           </>
         ) : (
-          <button onClick={handleLogout} className="btn btn-danger">
-            Logout
-          </button>
+          <>
+            <Button to="/dashboard" text="Dashboard" variant="light" className="text-dark" />
+            <button onClick={handleLogout} className="btn btn-danger ms-2">
+              Logout
+            </button>
+          </>
         )}
       </div>
     </header>
